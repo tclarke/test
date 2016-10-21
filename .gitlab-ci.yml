@@ -9,7 +9,8 @@ before_script:
 
 mirror:
   script:
-    - git remote add github git@github.com:tclarke/test.git || true
+    - git remote show github && git remote remove github
+    - git remote add github git@github.com:tclarke/test.git
     - git push --all github
   tags:
     - docker
