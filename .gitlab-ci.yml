@@ -3,8 +3,9 @@ before_script:
   - apk update && apk add git openssh
   - mkdir -p ~/.ssh
   - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-  - printf "host github.com\n  HostName github.com\n  IdentityFile ~/.ssh/id_rsa\n  User git\n" > ~/.ssh/config
   - chmod -R 0600 ~/.ssh
+  - echo $(ssh-agent -s)
+  - yes | ssh-add ~/.ssh/id_rsa
 
 mirror:
   script:
