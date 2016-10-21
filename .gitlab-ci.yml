@@ -1,10 +1,10 @@
 image: alpine
 before_script:
-  - apk update && apk add git openssh
-  - eval $(ssh-agent -s)
-  - echo "$SSH_PRIVATE_KEY" | ssh-add
+  - apk update && apk add git
   - mkdir -p ~/.ssh
-  - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+  - printf "Host *\n  IdentityFile ~/.ssh/id_rsa\n" > ~/.ssh/config
+  - chmod -R 0600 ~/.ssh
 
 mirror:
   script:
