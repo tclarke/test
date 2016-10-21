@@ -2,7 +2,7 @@ image: alpine
 before_script:
   - apk update && apk add git openssh
   - eval $(ssh-agent -s)
-  - ssh-add <(echo "$SSH_PRIVATE_KEY")
+  - echo "$SSH_PRIVATE_KEY" | ssh-add
   - mkdir -p ~/.ssh
   - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
 
