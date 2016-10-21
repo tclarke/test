@@ -8,5 +8,5 @@ before_script:
 
 mirror:
   script:
-    - git remote add github git@github.com:tclarke/test.git
+    - git remote add github git@github.com:tclarke/test.git || true
     - git push --all github
