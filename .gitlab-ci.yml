@@ -6,10 +6,12 @@ before_script:
   - chmod -R 0600 ~/.ssh
   - eval $(ssh-agent -s)
   - yes | ssh-add ~/.ssh/id_rsa || true
+  - git remote | grep github && git remote remove github
+  - ssh-keygen -R github.com || true
+  - ssh-keyscan github.com >> ~/.ssh/known_hosts || true
 
 mirror:
   script:
-    - git remote | grep github && git remote remove github
     - git remote add github git@github.com:tclarke/test.git
     - git push --all github
   tags:
