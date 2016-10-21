@@ -5,7 +5,7 @@ before_script:
   - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
   - chmod -R 0600 ~/.ssh
   - eval $(ssh-agent -s)
-  - yes | ssh-add ~/.ssh/id_rsa
+  - yes | ssh-add ~/.ssh/id_rsa || true
 
 mirror:
   script:
