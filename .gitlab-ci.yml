@@ -10,3 +10,5 @@ mirror:
   script:
     - git remote add github git@github.com:tclarke/test.git || true
     - git push --all github
+  tags:
+    - docker
