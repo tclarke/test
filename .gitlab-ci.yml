@@ -9,7 +9,7 @@ before_script:
 
 mirror:
   script:
-    - git remote show github && git remote remove github
+    - git remote | grep github && git remote remove github
     - git remote add github git@github.com:tclarke/test.git
     - git push --all github
   tags:
